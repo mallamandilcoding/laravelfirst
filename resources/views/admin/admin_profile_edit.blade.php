@@ -11,28 +11,28 @@
 
                         <h4 class="card-title">Edit profile details</h4>
 
-                        <form action="">
+                        <form method="post" action="{{ route('store.profile') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" placeholder="Name" id="example-text-input"
-                                        value="{{ $adminData->name}}">
+                                    <input name="name" class="form-control" type="text" placeholder="Name"
+                                        id="example-text-input" value="{{ $adminData->name}}">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" placeholder="Email" id="example-text-input"
-                                        value="{{ $adminData->email }}">
+                                    <input name="email" class="form-control" type="text" placeholder="Email"
+                                        id="example-text-input" value="{{ $adminData->email }}">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Profile Image</label>
                                 <div class="col-sm-10">
-                                    <input name="profile_image" class="form-control" placeholder="" id="image"
+                                    <input name="profile_img" class="form-control" placeholder="" id="image"
                                         type="file">
                                 </div>
                             </div>
@@ -41,7 +41,8 @@
                                 <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                                 <div class="col-sm-10">
                                     <img id="showImage" class="rounded avatar-lg"
-                                        src="{{ asset('backend/assets/images/small/img-5.jpg') }}" alt="Card image cap">
+                                        src="{{ !empty($adminData->profile_img)? asset('upload/admin_image/'.$adminData->profile_img) : url('upload/no_image.jpg')  }}"
+                                        alt="Card image cap">
                                 </div>
                             </div>
 

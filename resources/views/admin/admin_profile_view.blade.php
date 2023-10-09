@@ -11,7 +11,8 @@
 
                     <div class="card">
                         <img class="img-thumbnail rounded-circle avatar-xl mx-auto"
-                            src="{{ asset('backend/assets/images/small/img-5.jpg') }}" alt="Card image cap">
+                            src="{{ !empty($adminData->profile_img)? url('upload/admin_image/'.$adminData->profile_img) : url('upload/no_image.jpg')  }}"
+                            alt="Card image cap">
                         <div class="card-body">
                             <h4 class="card-title">Name: {{ $adminData->name }}</h4>
                             <hr>
